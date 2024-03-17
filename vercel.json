@@ -6,9 +6,15 @@
       "use": "@vercel/static-build",
       "config": {
         "buildCommand": "npm run build",
-        "outputDirectory": "dist"
+        "outputDirectory": "build" // Changed to "build" for Create React App
       }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/[^.]+",
+      "dest": "/index.html", // Changed to "/index.html" to serve the built React app
+      "status": 200
     }
   ]
 }
-{ "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }] }
