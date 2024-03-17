@@ -1,7 +1,7 @@
 import { useState } from "react";
 import signupImg from '../assets/images/signup.gif';
 import { Link, useNavigate} from 'react-router-dom';
-import uploadImageToCloudinary from "../utils/uploadCloudinary.js";
+import uploadImageToCloudinary from "../utils/uploadCloudinary";
 import { BASE_URL } from "../config";
 import {toast} from 'react-toastify'
 import HashLoader from 'react-spinners/HashLoader'
@@ -10,7 +10,7 @@ const Signup = () => {
 
   const [selectedFile , setSelectedFile] = useState(null);
   const [previewURL ,setPreviewURL] = useState("");
- const [loading ,setLoading] = useState(false);
+  const [loading ,setLoading] = useState(false);
   const [formData , setFormData] = useState({
     name :"",
     email :"",
@@ -40,15 +40,16 @@ const handleFileInputChange = async (event) =>{
  
 const submitHandler = async event =>{
 
+  console.log(formData);
   event.preventDefault();
   setLoading(true)
 
 
   try {
-    const res = await fetch (`${BASE_URL}/api/v1/auth/register`,{
+    const res = await fetch(`${BASE_URL}/auth/register`,{
       method :'post',
       headers :{
-        'Content-Type ':'application/json' 
+        'Content-Type':'application/json' 
       },
       body : JSON.stringify(formData)
 

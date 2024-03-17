@@ -31,7 +31,7 @@ const submitHandler = async event =>{
     const res = await fetch (`${BASE_URL}/auth/login`,{
       method :'post',
       headers :{
-        'Content-Type ':'application/json' 
+        'Content-Type':'application/json' 
       },
       body : JSON.stringify(formData)
 
